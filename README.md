@@ -1,22 +1,50 @@
-🚗 Baku Rent A Car — Animated Landing Page
-A modern, fully responsive and animated landing page for a car rental service based in Baku, Azerbaijan.
-This project is built as a portfolio piece to showcase clean UI design, smooth animations, and modern frontend development practices using Next.js.
-✨ Features
-🎨 Clean and modern UI design
-⚡ Fast performance with server-side rendering
-📱 Fully responsive (mobile-first)
-🎬 Smooth animations and transitions
-🚗 Car showcase section
-💬 Testimonials section
-📞 Call-to-action blocks
-🛠 Tech Stack
-Next.js
-React
-Tailwind CSS
-Framer Motion
-🎯 Goal of the Project
-The main goal of this project is to:
-Practice building real-world UI/UX
-Improve frontend animation skills
-Create a strong portfolio project
-Simulate a real client-based landing page
+# 🚗 Baku Rent A Car — Premium Animated Landing
+
+A modern, animated and fully responsive landing page for a car rental service in Baku.  
+Built with a focus on smooth user experience, clean UI, and high-end visual design.
+
+---
+
+## ✨ Overview
+
+This project is a portfolio-ready landing page that simulates a real-world Rent A Car business website.
+
+It highlights:
+- modern frontend architecture
+- smooth animations
+- premium UI/UX design
+
+---
+
+## 🎨 Features
+
+- ⚡ Fast and optimized performance
+- 🎬 Smooth animations and transitions
+- 📱 Fully responsive (mobile-first)
+- 🚗 Car showcase with interactive cards
+- 💬 Testimonials section
+- 🎯 Strong call-to-action blocks
+- 🌙 Modern dark / luxury UI style
+
+---
+
+## 🛠 Tech Stack
+
+- Next.js  
+- React  
+- Tailwind CSS  
+- Framer Motion  
+
+---
+
+
+
+
+
+## 🚀 Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/baku-rentcar-landing.git
+cd baku-rentcar-landing
