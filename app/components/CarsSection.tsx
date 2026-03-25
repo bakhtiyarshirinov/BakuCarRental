@@ -1,0 +1,224 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { Star, Zap, Users } from 'lucide-react';
+
+interface Car {
+  id: number;
+  name: string;
+  category: string;
+  price: number;
+  rating: number;
+  image: string;
+  specs: {
+    seats: number;
+    transmission: string;
+    acceleration: string;
+  };
+}
+
+const cars: Car[] = [
+  {
+    id: 1,
+    name: 'Mercedes-Benz E-Class',
+    category: 'Luxury Sedan',
+    price: 150,
+    rating: 5,
+    image: 'https://images.unsplash.com/photo-1618654377503-930e6dc16913?w=500&h=500&fit=crop',
+    specs: { seats: 5, transmission: 'Automatic', acceleration: '5.5s' },
+  },
+  {
+    id: 2,
+    name: 'BMW X7',
+    category: 'Luxury SUV',
+    price: 200,
+    rating: 5,
+    image: 'https://images.unsplash.com/photo-1606611013016-969c19f27081?w=500&h=500&fit=crop',
+    specs: { seats: 7, transmission: 'Automatic', acceleration: '5.2s' },
+  },
+  {
+    id: 3,
+    name: 'Audi A8',
+    category: 'Executive Sedan',
+    price: 180,
+    rating: 5,
+    image: 'https://images.unsplash.com/photo-1606664515524-2ddc6298947d?w=500&h=500&fit=crop',
+    specs: { seats: 5, transmission: 'Automatic', acceleration: '5.4s' },
+  },
+  {
+    id: 4,
+    name: 'Tesla Model S',
+    category: 'Electric Luxury',
+    price: 190,
+    rating: 5,
+    image: 'https://images.unsplash.com/photo-1560958089-b8a63ebd8acc?w=500&h=500&fit=crop',
+    specs: { seats: 5, transmission: 'Electric', acceleration: '3.2s' },
+  },
+  {
+    id: 5,
+    name: 'Porsche 911',
+    category: 'Sports Car',
+    price: 220,
+    rating: 5,
+    image: 'https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=500&h=500&fit=crop',
+    specs: { seats: 4, transmission: 'Automatic', acceleration: '3.4s' },
+  },
+  {
+    id: 6,
+    name: 'Range Rover Evoque',
+    category: 'Compact Luxury',
+    price: 140,
+    rating: 4.8,
+    image: 'https://images.unsplash.com/photo-1609706228149-25b5a4261db0?w=500&h=500&fit=crop',
+    specs: { seats: 5, transmission: 'Automatic', acceleration: '6.1s' },
+  },
+];
+
+export default function CarsSection() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8 },
+    },
+  };
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8 },
+    },
+  };
+
+  return (
+    <section id="fleet" className="py-20 px-6 md:px-12 bg-black relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl -z-10" />
+
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+          variants={titleVariants}
+          className="text-center mb-16"
+        >
+          <span className="text-sm md:text-base tracking-widest text-amber-400 font-semibold uppercase">
+            Our Fleet
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
+            Premium Vehicles Collection
+          </h2>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            Handpicked luxury cars for every occasion. Drive excellence in Baku.
+          </p>
+        </motion.div>
+
+        {/* Cars Grid */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+          variants={containerVariants}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {cars.map((car) => (
+            <motion.div
+              key={car.id}
+              variants={itemVariants}
+              whileHover={{ y: -8 }}
+              className="group bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl overflow-hidden transition-all duration-300 hover:border-amber-500/50"
+            >
+              {/* Image Container */}
+              <div className="relative h-64 overflow-hidden bg-gray-800">
+                <motion.img
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.4 }}
+                  src={car.image}
+                  alt={car.name}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-40" />
+                
+                {/* Category Badge */}
+                <div className="absolute top-4 right-4">
+                  <motion.span
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="px-3 py-1 bg-amber-500/90 text-black text-xs font-semibold rounded-full"
+                  >
+                    {car.category}
+                  </motion.span>
+                </div>
+
+                {/* Rating */}
+                <div className="absolute top-4 left-4 flex items-center gap-1">
+                  <Star size={16} className="fill-amber-400 text-amber-400" />
+                  <span className="text-white text-sm font-semibold">{car.rating}</span>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                {/* Name & Price */}
+                <div className="mb-4">
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
+                    {car.name}
+                  </h3>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-3xl font-bold text-amber-400">
+                      ${car.price}
+                    </span>
+                    <span className="text-gray-400 text-sm">/day</span>
+                  </div>
+                </div>
+
+                {/* Specs */}
+                <div className="space-y-3 mb-6 pb-6 border-b border-gray-800">
+                  <div className="flex items-center gap-3 text-gray-300">
+                    <Users size={18} className="text-amber-400" />
+                    <span className="text-sm">{car.specs.seats} Seats</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-gray-300">
+                    <Zap size={18} className="text-amber-400" />
+                    <span className="text-sm">{car.specs.transmission}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-gray-300">
+                    <span className="text-amber-400 font-semibold">⚡</span>
+                    <span className="text-sm">0-100 km/h: {car.specs.acceleration}</span>
+                  </div>
+                </div>
+
+                {/* CTA Button */}
+                <motion.button
+                  whileHover={{ scale: 1.02, backgroundColor: '#f59e0b' }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-3 bg-amber-500/20 text-amber-400 border border-amber-500/50 font-semibold rounded-lg transition-all duration-300 hover:text-black"
+                >
+                  View Details
+                </motion.button>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
