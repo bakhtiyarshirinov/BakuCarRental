@@ -98,7 +98,6 @@ export default function PricingPage() {
     <main className="bg-white min-h-screen">
       <Navbar />
 
-      {/* Hero Section */}
       <section className="pt-32 pb-20 px-6 md:px-12 relative overflow-hidden">
         <motion.div
           style={{ y: parallaxOffset }}
@@ -128,7 +127,6 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Pricing Cards */}
       <section className="py-20 px-6 md:px-12 relative">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -149,7 +147,6 @@ export default function PricingPage() {
                     : 'bg-white border border-gray-300 text-black'
                 }`}
               >
-                {/* Popular Badge */}
                 {plan.popular && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
@@ -163,7 +160,6 @@ export default function PricingPage() {
                 )}
 
                 <div className={`p-8 ${plan.popular ? 'pt-16' : 'pt-8'}`}>
-                  {/* Header */}
                   <div className="mb-6 text-center">
                     <motion.div
                       animate={{ scale: [1, 1.2, 1] }}
@@ -177,7 +173,6 @@ export default function PricingPage() {
                       {plan.description}
                     </p>
 
-                    {/* Price */}
                     <div className="mb-8">
                       <motion.div
                         animate={{ opacity: [0.8, 1, 0.8] }}
@@ -193,7 +188,6 @@ export default function PricingPage() {
                     </div>
                   </div>
 
-                  {/* Features */}
                   <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -235,7 +229,6 @@ export default function PricingPage() {
             ))}
           </motion.div>
 
-          {/* Car Categories Pricing */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -271,7 +264,6 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
       <section className="py-20 px-6 md:px-12 relative">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-black text-center mb-12">

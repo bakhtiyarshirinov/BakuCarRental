@@ -83,7 +83,6 @@ export default function ServicesPage() {
     <main className="bg-white min-h-screen">
       <Navbar />
 
-      {/* Hero Section */}
       <section className="pt-32 pb-20 px-6 md:px-12 relative overflow-hidden">
         {/* Background elements */}
         <motion.div
@@ -114,7 +113,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services Grid */}
       <section className="py-20 px-6 md:px-12 relative">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -141,7 +139,6 @@ export default function ServicesPage() {
                     <Icon size={32} className="text-white" />
                   </motion.div>
 
-                  {/* Content */}
                   <motion.h3
                     className="text-2xl font-bold text-black mb-3 group-hover:text-gray-700 transition-colors"
                     whileHover={{ letterSpacing: '0.5px' }}
@@ -153,7 +150,6 @@ export default function ServicesPage() {
                     {service.description}
                   </p>
 
-                  {/* Features */}
                   <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -172,7 +168,7 @@ export default function ServicesPage() {
                     ))}
                   </motion.div>
 
-                  {/* CTA Button */}
+
                   <motion.button
                     whileHover={{ scale: 1.05, backgroundColor: '#000', color: '#fff' }}
                     whileTap={{ scale: 0.95 }}
@@ -187,7 +183,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-20 px-6 md:px-12 relative">
         <div className="max-w-4xl mx-auto">
           <motion.div

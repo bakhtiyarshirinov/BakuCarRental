@@ -42,7 +42,6 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white pt-24">
-      {/* Subtle gradient background */}
       <motion.div
         variants={backgroundVariants}
         initial="hidden"
@@ -50,7 +49,6 @@ export default function Hero() {
         style={{ y: parallaxOffset }}
         className="absolute inset-0 z-0"
       >
-        {/* Floating subtle circles */}
         <motion.div
           animate={{
             y: [0, -20, 0],
@@ -69,14 +67,12 @@ export default function Hero() {
         />
       </motion.div>
 
-      {/* Content */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
         className="relative z-10 max-w-4xl mx-auto px-6 md:px-12 text-center"
       >
-        {/* Pre-heading */}
         <motion.div
           variants={itemVariants}
           className="inline-block mb-6"
@@ -86,7 +82,6 @@ export default function Hero() {
           </span>
         </motion.div>
 
-        {/* Main headline */}
         <motion.h1
           variants={itemVariants}
           className="text-5xl md:text-7xl lg:text-8xl font-bold text-black mb-6 leading-tight"
@@ -94,7 +89,6 @@ export default function Hero() {
           Drive Your Dreams
         </motion.h1>
 
-        {/* Subheading */}
         <motion.p
           variants={itemVariants}
           className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed"
@@ -102,7 +96,6 @@ export default function Hero() {
           Experience luxury and elegance with our curated collection of premium vehicles. Excellence in every journey.
         </motion.p>
 
-        {/* CTA Buttons */}
         <motion.div
           variants={itemVariants}
           className="flex flex-col md:flex-row gap-4 justify-center items-center mt-10"
@@ -131,7 +124,6 @@ export default function Hero() {
           </motion.button>
         </motion.div>
 
-        {/* Stats or additional info */}
         <motion.div
           variants={itemVariants}
           className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8"
@@ -160,7 +152,6 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Scroll indicator */}
       <motion.div
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}

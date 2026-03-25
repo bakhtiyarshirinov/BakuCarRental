@@ -74,7 +74,6 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <Link href="/">
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -89,7 +88,6 @@ export default function Navbar() {
             </motion.div>
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link, index) => (
               <motion.a
@@ -107,7 +105,6 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* CTA Button - Desktop */}
           <motion.button
             whileHover={{ scale: 1.05, backgroundColor: '#000', color: '#fff' }}
             whileTap={{ scale: 0.98 }}
@@ -120,7 +117,6 @@ export default function Navbar() {
             Book Now
           </motion.button>
 
-          {/* Mobile Menu Button */}
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
@@ -131,7 +127,6 @@ export default function Navbar() {
           </motion.button>
         </div>
 
-        {/* Mobile Navigation */}
         <motion.div
           initial="closed"
           animate={isOpen ? 'open' : 'closed'}

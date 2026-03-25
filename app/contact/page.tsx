@@ -65,7 +65,6 @@ export default function ContactPage() {
     <main className="bg-white min-h-screen">
       <Navbar />
 
-      {/* Hero Section */}
       <section className="pt-32 pb-20 px-6 md:px-12 relative overflow-hidden">
         <motion.div
           style={{ y: parallaxOffset }}
@@ -95,7 +94,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Methods */}
       <section className="py-20 px-6 md:px-12 relative">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -130,7 +128,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Form & Map */}
       <section className="py-20 px-6 md:px-12 relative">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

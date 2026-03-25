@@ -109,7 +109,6 @@ export default function CarsSection() {
 
   return (
     <section id="fleet" className="py-24 px-6 md:px-12 bg-white relative overflow-hidden">
-      {/* Subtle background elements with parallax */}
       <motion.div
         style={{ y: parallaxOffset }}
         className="absolute top-0 right-0 w-96 h-96 bg-gray-100/50 rounded-full blur-3xl -z-10"
@@ -120,7 +119,6 @@ export default function CarsSection() {
       />
 
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -139,7 +137,6 @@ export default function CarsSection() {
           </p>
         </motion.div>
 
-        {/* Cars Grid */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -154,7 +151,6 @@ export default function CarsSection() {
               whileHover={{ y: -12, borderColor: '#000' }}
               className="group bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer shadow-sm hover:shadow-lg"
             >
-              {/* Image Container */}
               <div className="relative h-64 overflow-hidden bg-gray-100">
                 <motion.img
                   whileHover={{ scale: 1.15, rotate: 2 }}
@@ -163,7 +159,6 @@ export default function CarsSection() {
                   alt={car.name}
                   className="w-full h-full object-cover"
                 />
-                {/* Overlay gradient */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 0.1 }}
@@ -171,7 +166,6 @@ export default function CarsSection() {
                   className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
                 />
                 
-                {/* Category Badge with animation */}
                 <motion.div
                   className="absolute top-4 right-4"
                   initial={{ opacity: 0, x: 20 }}
@@ -184,7 +178,6 @@ export default function CarsSection() {
                   </span>
                 </motion.div>
 
-                {/* Rating */}
                 <motion.div
                   className="absolute top-4 left-4 flex items-center gap-1 bg-white/90 px-2 py-1 rounded-full"
                   whileHover={{ scale: 1.05 }}
@@ -194,13 +187,11 @@ export default function CarsSection() {
                 </motion.div>
               </div>
 
-              {/* Content */}
               <motion.div
                 className="p-6"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
               >
-                {/* Name & Price */}
                 <motion.div
                   className="mb-4"
                   initial={{ opacity: 0 }}
@@ -227,7 +218,6 @@ export default function CarsSection() {
                   </motion.div>
                 </motion.div>
 
-                {/* Specs */}
                 <motion.div
                   className="space-y-3 mb-6 pb-6 border-b border-gray-200"
                   initial={{ opacity: 0 }}
@@ -257,7 +247,6 @@ export default function CarsSection() {
                   </motion.div>
                 </motion.div>
 
-                {/* CTA Button */}
                 <motion.button
                   whileHover={{
                     scale: 1.05,
@@ -270,7 +259,6 @@ export default function CarsSection() {
                   transition={{ delay: 0.15 }}
                   className="w-full py-3 bg-gray-100 text-black border border-gray-300 font-semibold rounded-lg transition-all duration-300 hover:text-white overflow-hidden relative"
                 >
-                  {/* Animated background */}
                   <motion.div
                     className="absolute inset-0 bg-black -z-10"
                     initial={{ scaleX: 0 }}
