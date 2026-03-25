@@ -108,15 +108,15 @@ export default function CarsSection() {
   };
 
   return (
-    <section id="fleet" className="py-20 px-6 md:px-12 bg-black relative overflow-hidden">
-      {/* Animated background elements with parallax */}
+    <section id="fleet" className="py-24 px-6 md:px-12 bg-white relative overflow-hidden">
+      {/* Subtle background elements with parallax */}
       <motion.div
         style={{ y: parallaxOffset }}
-        className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl -z-10"
+        className="absolute top-0 right-0 w-96 h-96 bg-gray-100/50 rounded-full blur-3xl -z-10"
       />
       <motion.div
         style={{ y: -parallaxOffset }}
-        className="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl -z-10"
+        className="absolute bottom-0 left-0 w-96 h-96 bg-gray-100/50 rounded-full blur-3xl -z-10"
       />
 
       <div className="max-w-7xl mx-auto">
@@ -128,14 +128,14 @@ export default function CarsSection() {
           variants={titleVariants}
           className="text-center mb-16"
         >
-          <span className="text-sm md:text-base tracking-widest text-amber-400 font-semibold uppercase">
+          <span className="text-sm md:text-base tracking-widest text-gray-600 font-semibold uppercase">
             Our Fleet
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
-            Premium Vehicles Collection
+          <h2 className="text-4xl md:text-5xl font-bold text-black mt-4 mb-6">
+            Premium Vehicles
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Handpicked luxury cars for every occasion. Drive excellence in Baku.
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Discover our handpicked collection of luxury vehicles designed for sophistication and comfort.
           </p>
         </motion.div>
 
@@ -151,11 +151,11 @@ export default function CarsSection() {
             <motion.div
               key={car.id}
               variants={itemVariants}
-              whileHover={{ y: -12, borderColor: '#f59e0b' }}
-              className="group bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer"
+              whileHover={{ y: -12, borderColor: '#000' }}
+              className="group bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer shadow-sm hover:shadow-lg"
             >
               {/* Image Container */}
-              <div className="relative h-64 overflow-hidden bg-gray-800">
+              <div className="relative h-64 overflow-hidden bg-gray-100">
                 <motion.img
                   whileHover={{ scale: 1.15, rotate: 2 }}
                   transition={{ duration: 0.5 }}
@@ -165,8 +165,8 @@ export default function CarsSection() {
                 />
                 {/* Overlay gradient */}
                 <motion.div
-                  initial={{ opacity: 0.4 }}
-                  whileHover={{ opacity: 0.2 }}
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 0.1 }}
                   transition={{ duration: 0.3 }}
                   className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
                 />
@@ -179,20 +179,27 @@ export default function CarsSection() {
                   whileHover={{ scale: 1.1, x: -3 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <span className="px-3 py-1 bg-amber-500/90 text-black text-xs font-semibold rounded-full shadow-lg">
+                  <span className="px-3 py-1 bg-black text-white text-xs font-semibold rounded-full shadow-md">
                     {car.category}
                   </span>
                 </motion.div>
 
                 {/* Rating */}
-                <div className="absolute top-4 left-4 flex items-center gap-1">
-                  <Star size={16} className="fill-amber-400 text-amber-400" />
-                  <span className="text-white text-sm font-semibold">{car.rating}</span>
-                </div>
+                <motion.div
+                  className="absolute top-4 left-4 flex items-center gap-1 bg-white/90 px-2 py-1 rounded-full"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <Star size={14} className="fill-black text-black" />
+                  <span className="text-black text-xs font-semibold">{car.rating}</span>
+                </motion.div>
               </div>
 
               {/* Content */}
-              <div className="p-6">
+              <motion.div
+                className="p-6"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+              >
                 {/* Name & Price */}
                 <motion.div
                   className="mb-4"
@@ -200,7 +207,7 @@ export default function CarsSection() {
                   whileInView={{ opacity: 1 }}
                 >
                   <motion.h3
-                    className="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors"
+                    className="text-xl font-bold text-black mb-2 group-hover:text-gray-700 transition-colors"
                     whileHover={{ letterSpacing: '0.5px' }}
                   >
                     {car.name}
@@ -210,42 +217,42 @@ export default function CarsSection() {
                     whileHover={{ scale: 1.05 }}
                   >
                     <motion.span
-                      className="text-3xl font-bold text-amber-400"
+                      className="text-3xl font-bold text-black"
                       animate={{ opacity: [0.8, 1, 0.8] }}
                       transition={{ duration: 3, repeat: Infinity }}
                     >
                       ${car.price}
                     </motion.span>
-                    <span className="text-gray-400 text-sm">/day</span>
+                    <span className="text-gray-600 text-sm">/day</span>
                   </motion.div>
                 </motion.div>
 
                 {/* Specs */}
                 <motion.div
-                  className="space-y-3 mb-6 pb-6 border-b border-gray-800"
+                  className="space-y-3 mb-6 pb-6 border-b border-gray-200"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.1 }}
                 >
                   <motion.div
-                    className="flex items-center gap-3 text-gray-300 group/spec hover:text-amber-400 transition-colors"
+                    className="flex items-center gap-3 text-gray-700 group/spec hover:text-black transition-colors"
                     whileHover={{ x: 4 }}
                   >
-                    <Users size={18} className="text-amber-400" />
+                    <Users size={18} className="text-gray-600" />
                     <span className="text-sm">{car.specs.seats} Seats</span>
                   </motion.div>
                   <motion.div
-                    className="flex items-center gap-3 text-gray-300 group/spec hover:text-amber-400 transition-colors"
+                    className="flex items-center gap-3 text-gray-700 group/spec hover:text-black transition-colors"
                     whileHover={{ x: 4 }}
                   >
-                    <Zap size={18} className="text-amber-400" />
+                    <Zap size={18} className="text-gray-600" />
                     <span className="text-sm">{car.specs.transmission}</span>
                   </motion.div>
                   <motion.div
-                    className="flex items-center gap-3 text-gray-300 group/spec hover:text-amber-400 transition-colors"
+                    className="flex items-center gap-3 text-gray-700 group/spec hover:text-black transition-colors"
                     whileHover={{ x: 4 }}
                   >
-                    <span className="text-amber-400 font-semibold">⚡</span>
+                    <span className="text-gray-600 font-semibold">⚡</span>
                     <span className="text-sm">0-100 km/h: {car.specs.acceleration}</span>
                   </motion.div>
                 </motion.div>
@@ -254,18 +261,18 @@ export default function CarsSection() {
                 <motion.button
                   whileHover={{
                     scale: 1.05,
-                    backgroundColor: '#f59e0b',
-                    color: '#000',
+                    backgroundColor: '#000',
+                    color: '#fff',
                   }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.15 }}
-                  className="w-full py-3 bg-amber-500/20 text-amber-400 border border-amber-500/50 font-semibold rounded-lg transition-all duration-300 hover:text-black overflow-hidden relative group/btn"
+                  className="w-full py-3 bg-gray-100 text-black border border-gray-300 font-semibold rounded-lg transition-all duration-300 hover:text-white overflow-hidden relative"
                 >
                   {/* Animated background */}
                   <motion.div
-                    className="absolute inset-0 bg-amber-500 -z-10"
+                    className="absolute inset-0 bg-black -z-10"
                     initial={{ scaleX: 0 }}
                     whileHover={{ scaleX: 1 }}
                     transition={{ duration: 0.3 }}
@@ -273,7 +280,7 @@ export default function CarsSection() {
                   />
                   View Details
                 </motion.button>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>

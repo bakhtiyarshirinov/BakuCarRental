@@ -41,8 +41,8 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* Animated background gradient with parallax */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white pt-24">
+      {/* Subtle gradient background */}
       <motion.div
         variants={backgroundVariants}
         initial="hidden"
@@ -50,14 +50,14 @@ export default function Hero() {
         style={{ y: parallaxOffset }}
         className="absolute inset-0 z-0"
       >
-        {/* Floating gradient circles */}
+        {/* Floating subtle circles */}
         <motion.div
           animate={{
             y: [0, -20, 0],
             x: [0, 10, 0],
           }}
           transition={{ repeat: Infinity, duration: 8 }}
-          className="absolute top-20 left-10 w-72 h-72 bg-amber-500/20 rounded-full blur-3xl opacity-40"
+          className="absolute top-20 left-10 w-72 h-72 bg-gray-100 rounded-full blur-3xl opacity-30"
         />
         <motion.div
           animate={{
@@ -65,9 +65,8 @@ export default function Hero() {
             x: [0, -10, 0],
           }}
           transition={{ repeat: Infinity, duration: 10, delay: 1 }}
-          className="absolute bottom-20 right-10 w-96 h-96 bg-amber-600/15 rounded-full blur-3xl opacity-30"
+          className="absolute bottom-20 right-10 w-96 h-96 bg-gray-100 rounded-full blur-3xl opacity-20"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black" />
       </motion.div>
 
       {/* Content */}
@@ -82,26 +81,25 @@ export default function Hero() {
           variants={itemVariants}
           className="inline-block mb-6"
         >
-          <span className="text-xs md:text-sm tracking-widest text-amber-400 font-semibold uppercase">
-            Welcome to Premium Car Rentals
+          <span className="text-xs md:text-sm tracking-widest text-gray-600 font-semibold uppercase">
+            Premium Car Rental Service
           </span>
         </motion.div>
 
         {/* Main headline */}
         <motion.h1
           variants={itemVariants}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+          className="text-5xl md:text-7xl lg:text-8xl font-bold text-black mb-6 leading-tight"
         >
-          Drive Your Dreams in Baku
+          Drive Your Dreams
         </motion.h1>
 
         {/* Subheading */}
         <motion.p
           variants={itemVariants}
-          className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed"
+          className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed"
         >
-          Explore the City of Flames with our exclusive collection of luxury vehicles. 
-          Premium service, competitive rates, and unforgettable driving experiences.
+          Experience luxury and elegance with our curated collection of premium vehicles. Excellence in every journey.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -110,16 +108,10 @@ export default function Hero() {
           className="flex flex-col md:flex-row gap-4 justify-center items-center mt-10"
         >
           <motion.button
-            whileHover={{ scale: 1.08, backgroundColor: '#fbbf24' }}
+            whileHover={{ scale: 1.05, backgroundColor: '#000', color: '#fff' }}
             whileTap={{ scale: 0.95 }}
-            className="group relative px-8 md:px-10 py-4 bg-amber-500 text-black font-semibold rounded-lg transition-all duration-300 flex items-center gap-2 overflow-hidden"
+            className="group relative px-8 md:px-10 py-4 border-2 border-black text-black font-semibold rounded-lg transition-all duration-300 flex items-center gap-2"
           >
-            {/* Animated background shine */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30 -z-10"
-              animate={{ x: ['-100%', '100%'] }}
-              transition={{ duration: 0.5 }}
-            />
             Book Your Ride
             <motion.span
               className="inline-block"
@@ -131,9 +123,9 @@ export default function Hero() {
           </motion.button>
 
           <motion.button
-            whileHover={{ scale: 1.08, borderColor: '#fbbf24', color: '#fbbf24' }}
+            whileHover={{ scale: 1.05, backgroundColor: '#f3f4f6' }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 md:px-10 py-4 border-2 border-amber-500 text-amber-400 font-semibold rounded-lg transition-all duration-300 hover:bg-amber-500/10"
+            className="px-8 md:px-10 py-4 border-2 border-gray-300 text-black font-semibold rounded-lg transition-all duration-300"
           >
             View Fleet
           </motion.button>
@@ -142,7 +134,7 @@ export default function Hero() {
         {/* Stats or additional info */}
         <motion.div
           variants={itemVariants}
-          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8"
         >
           {[
             { number: '50+', label: 'Premium Vehicles' },
@@ -156,13 +148,13 @@ export default function Hero() {
               className="text-center cursor-pointer group"
             >
               <motion.p
-                className="text-2xl md:text-3xl font-bold text-amber-400 mb-2 group-hover:text-amber-300 transition-colors"
+                className="text-2xl md:text-3xl font-bold text-black mb-2 group-hover:text-gray-600 transition-colors"
                 animate={{ scale: [1, 1.1, 1] }}
                 transition={{ delay: index * 0.2, duration: 2, repeat: Infinity }}
               >
                 {stat.number}
               </motion.p>
-              <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">{stat.label}</p>
+              <p className="text-gray-600 text-sm group-hover:text-gray-800 transition-colors">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -174,8 +166,8 @@ export default function Hero() {
         transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
-        <div className="w-6 h-10 border border-amber-400/50 rounded-full flex items-center justify-center">
-          <div className="w-1 h-2 bg-amber-400 rounded-full animate-pulse" />
+        <div className="w-6 h-10 border border-gray-400 rounded-full flex items-center justify-center">
+          <div className="w-1 h-2 bg-gray-400 rounded-full animate-pulse" />
         </div>
       </motion.div>
     </section>

@@ -4,7 +4,7 @@ import CarsSection from './components/CarsSection';
 
 export default function Home() {
   return (
-    <main className="bg-black">
+    <main className="bg-white">
       <Navbar />
       <Hero />
       <CarsSection />
