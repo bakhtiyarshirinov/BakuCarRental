@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Star, Zap, Users } from 'lucide-react';
+import { useParallax } from '@/app/hooks/useAnimations';
 
 interface Car {
   id: number;
@@ -75,19 +76,21 @@ const cars: Car[] = [
 ];
 
 export default function CarsSection() {
+  const parallaxOffset = useParallax(0.3);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
+        staggerChildren: 0.12,
+        delayChildren: 0.3,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
       y: 0,
@@ -96,7 +99,7 @@ export default function CarsSection() {
   };
 
   const titleVariants = {
-    hidden: { opacity: 0, y: -20 },
+    hidden: { opacity: 0, y: -30 },
     visible: {
       opacity: 1,
       y: 0,
@@ -106,9 +109,15 @@ export default function CarsSection() {
 
   return (
     <section id="fleet" className="py-20 px-6 md:px-12 bg-black relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl -z-10" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl -z-10" />
+      {/* Animated background elements with parallax */}
+      <motion.div
+        style={{ y: parallaxOffset }}
+        className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl -z-10"
+      />
+      <motion.div
+        style={{ y: -parallaxOffset }}
+        className="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl -z-10"
+      />
 
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
@@ -142,31 +151,38 @@ export default function CarsSection() {
             <motion.div
               key={car.id}
               variants={itemVariants}
-              whileHover={{ y: -8 }}
-              className="group bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl overflow-hidden transition-all duration-300 hover:border-amber-500/50"
+              whileHover={{ y: -12, borderColor: '#f59e0b' }}
+              className="group bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer"
             >
               {/* Image Container */}
               <div className="relative h-64 overflow-hidden bg-gray-800">
                 <motion.img
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.4 }}
+                  whileHover={{ scale: 1.15, rotate: 2 }}
+                  transition={{ duration: 0.5 }}
                   src={car.image}
                   alt={car.name}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-40" />
+                {/* Overlay gradient */}
+                <motion.div
+                  initial={{ opacity: 0.4 }}
+                  whileHover={{ opacity: 0.2 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
+                />
                 
-                {/* Category Badge */}
-                <div className="absolute top-4 right-4">
-                  <motion.span
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="px-3 py-1 bg-amber-500/90 text-black text-xs font-semibold rounded-full"
-                  >
+                {/* Category Badge with animation */}
+                <motion.div
+                  className="absolute top-4 right-4"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  whileHover={{ scale: 1.1, x: -3 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <span className="px-3 py-1 bg-amber-500/90 text-black text-xs font-semibold rounded-full shadow-lg">
                     {car.category}
-                  </motion.span>
-                </div>
+                  </span>
+                </motion.div>
 
                 {/* Rating */}
                 <div className="absolute top-4 left-4 flex items-center gap-1">
@@ -178,40 +194,83 @@ export default function CarsSection() {
               {/* Content */}
               <div className="p-6">
                 {/* Name & Price */}
-                <div className="mb-4">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
+                <motion.div
+                  className="mb-4"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                >
+                  <motion.h3
+                    className="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors"
+                    whileHover={{ letterSpacing: '0.5px' }}
+                  >
                     {car.name}
-                  </h3>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-3xl font-bold text-amber-400">
+                  </motion.h3>
+                  <motion.div
+                    className="flex items-baseline gap-2"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <motion.span
+                      className="text-3xl font-bold text-amber-400"
+                      animate={{ opacity: [0.8, 1, 0.8] }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                    >
                       ${car.price}
-                    </span>
+                    </motion.span>
                     <span className="text-gray-400 text-sm">/day</span>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
 
                 {/* Specs */}
-                <div className="space-y-3 mb-6 pb-6 border-b border-gray-800">
-                  <div className="flex items-center gap-3 text-gray-300">
+                <motion.div
+                  className="space-y-3 mb-6 pb-6 border-b border-gray-800"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.1 }}
+                >
+                  <motion.div
+                    className="flex items-center gap-3 text-gray-300 group/spec hover:text-amber-400 transition-colors"
+                    whileHover={{ x: 4 }}
+                  >
                     <Users size={18} className="text-amber-400" />
                     <span className="text-sm">{car.specs.seats} Seats</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-gray-300">
+                  </motion.div>
+                  <motion.div
+                    className="flex items-center gap-3 text-gray-300 group/spec hover:text-amber-400 transition-colors"
+                    whileHover={{ x: 4 }}
+                  >
                     <Zap size={18} className="text-amber-400" />
                     <span className="text-sm">{car.specs.transmission}</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-gray-300">
+                  </motion.div>
+                  <motion.div
+                    className="flex items-center gap-3 text-gray-300 group/spec hover:text-amber-400 transition-colors"
+                    whileHover={{ x: 4 }}
+                  >
                     <span className="text-amber-400 font-semibold">⚡</span>
                     <span className="text-sm">0-100 km/h: {car.specs.acceleration}</span>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
 
                 {/* CTA Button */}
                 <motion.button
-                  whileHover={{ scale: 1.02, backgroundColor: '#f59e0b' }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full py-3 bg-amber-500/20 text-amber-400 border border-amber-500/50 font-semibold rounded-lg transition-all duration-300 hover:text-black"
+                  whileHover={{
+                    scale: 1.05,
+                    backgroundColor: '#f59e0b',
+                    color: '#000',
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15 }}
+                  className="w-full py-3 bg-amber-500/20 text-amber-400 border border-amber-500/50 font-semibold rounded-lg transition-all duration-300 hover:text-black overflow-hidden relative group/btn"
                 >
+                  {/* Animated background */}
+                  <motion.div
+                    className="absolute inset-0 bg-amber-500 -z-10"
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.3 }}
+                    style={{ originX: 0 }}
+                  />
                   View Details
                 </motion.button>
               </div>

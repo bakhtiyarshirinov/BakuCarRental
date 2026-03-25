@@ -4,9 +4,12 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import { useScroll } from '@/app/hooks/useAnimations';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const scrollY = useScroll();
+  const hasScrolled = scrollY > 50;
 
   const navLinks = [
     { name: 'Fleet', href: '#fleet' },
@@ -63,7 +66,11 @@ export default function Navbar() {
       initial="hidden"
       animate="visible"
       variants={navContainerVariants}
-      className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-amber-500/20"
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        hasScrolled
+          ? 'bg-black/90 border-b border-amber-500/40 shadow-lg shadow-amber-500/10'
+          : 'bg-black/80 border-b border-amber-500/20'
+      } backdrop-blur-md`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-4">
         <div className="flex items-center justify-between">
